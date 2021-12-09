@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <project name="zm-ssdb-ephemeral-store" default="deploy">
-  <import file="../zm-zcs/ant-global.xml" />
+  <import file="ant-global.xml" />
   <!-- Properties -->
   <property name="ext.name" value="com_zimbra_ssdb_ephemeral_store"/>
   <property name="dist.lib.dir" location="${dist.dir}/lib"/>
