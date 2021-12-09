@@ -1,5 +1,5 @@
 <?xml version="1.0"?>
-<project name="zm-ssdb-ephemeral-store" default="deploy">
+<project xmlns:ivy="antlib:org.apache.ivy.ant" name="zm-ssdb-ephemeral-store" default="deploy">
   <import file="ant-global.xml" />
   <!-- Properties -->
   <property name="ext.name" value="com_zimbra_ssdb_ephemeral_store"/>
@@ -35,9 +35,9 @@
   </target>
 
   <target name="dist" depends="jar" description="Copies jar to dist dir">
-    <copy todir="${extension.dist.dir}">
-      <fileset dir="${build.dir}" includes="${jar.file}" />
-    </copy>
+    <ivy:install organisation="zimbra" module="zm-ssdb-ephemeral-store" revision="latest.integration" settingsRef="dev.settings" from="build" to="build-dist" overwrite="true" transitive="true" type="jar"/>
+    <ivy:install organisation="org.apache.commons" module="commons-pool2" revision="2.4.2" settingsRef="dev.settings" from="chain-resolver" to="build-dist" overwrite="true" transitive="true" type="jar" />
+    <ivy:install organisation="redis.clients" module="jedis" revision="2.9.0" settingsRef="dev.settings" from="chain-resolver" to="build-dist" overwrite="true" transitive="true" type="jar" />
   </target>
 
   <target name="jar" depends="compile" description="Creates the jar file">
